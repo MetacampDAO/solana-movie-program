@@ -1,0 +1,14 @@
+[features]
+seeds = false
+[programs.localnet]
+solana_movie_program = "2SogeA4hASCYGTSQqoSqKy8cZ3bnka5N5U9Ewkswkyf5"
+
+[registry]
+url = "https://anchor.projectserum.com"
+
+[provider]
+cluster = "localnet"
+wallet = "/Users/vincentleow/.config/solana/jake.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
