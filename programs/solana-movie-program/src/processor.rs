@@ -76,30 +76,14 @@ pub fn update_movie_review(
   rating: u8,
   description: String
 ) -> Result<()> {    
-  msg!("Updating movie review...");
-  msg!("review title: {}", ctx.accounts.pda_account.title);
 
-  msg!("checking if movie account is initialized");
-  if !ctx.accounts.pda_account.is_initialized() {
-      msg!("Account is not initialized");
-      return Err(ReviewError::UninitializedAccount.into());
-  }
+  // check if movie account is initialized, if not return ReviewError::UninitializedAccount
 
-  if rating > 5 || rating < 1 {
-      msg!("Invalid Rating");
-      return Err(ReviewError::InvalidRating.into())
-  }
+  // check if rating is more than 5 or less than 1, if so return ReviewError::InvalidRating
 
-  msg!("Review before update:");
-  msg!("Rating: {}", ctx.accounts.pda_account.rating);
-  msg!("Description: {}", ctx.accounts.pda_account.description);
+  // set pda_account's rating to given rating
 
-  ctx.accounts.pda_account.rating = rating;
-  ctx.accounts.pda_account.description = description;
-
-  msg!("Review after update:");
-  msg!("Rating: {}", ctx.accounts.pda_account.rating);
-  msg!("Description: {}", ctx.accounts.pda_account.description);
+  // set pda_account's rating to given rating
 
   Ok(())
 }
